@@ -28,8 +28,9 @@ const DiceContainer = () => {
             setActiveIndex(finalIndex)
             setIsRolling(false)
             
-            dispatch(gameActions.diceNumber(finalIndex + 1)) 
-            dispatch(gameActions.resetGuessNumber())
+            dispatch(gameActions.diceNumber(finalIndex + 1))
+            dispatch(gameActions.updateScore())  // First update the score
+            dispatch(gameActions.resetGuessNumber())  // Then reset the guess
         }, duration)
 
         

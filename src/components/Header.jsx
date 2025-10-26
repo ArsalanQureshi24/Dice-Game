@@ -13,7 +13,6 @@ const Header = () => {
   };
 
   
-  console.log(game)
 
   return (
     <>
@@ -95,6 +94,7 @@ const Header = () => {
             </button>
           </li>{" "}
         </ul>{" "}
+        
       </header>
     </>
   );
