@@ -9,9 +9,9 @@ const HomePage = ({ handleOnCLick }) => {
           <div class="col-10 col-sm-8 col-lg-6">
             {" "}
             <img
-              src="dice_home_page_img.png"
+              src="src\assets\dice_home_page_img.png"
               class="d-block mx-lg-auto img-fluid"
-              alt="Bootstrap Themes"
+              alt="Dice Image"
               width="700"
               height="500"
               loading="lazy"

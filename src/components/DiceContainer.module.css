@@ -1,0 +1,28 @@
+.dice-image {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+.rolling {
+    animation: roll 0.8s ease-out;
+}
+
+@keyframes roll {
+    0% {
+        transform: translateZ(0) rotate(0deg);
+    }
+    25% {
+        transform: translateZ(100px) rotate(90deg);
+    }
+    50% {
+        transform: translateZ(0) rotate(180deg);
+    }
+    75% {
+        transform: translateZ(-100px) rotate(270deg);
+    }
+    100% {
+        transform: translateZ(0) rotate(360deg);
+    }
+}
