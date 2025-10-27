@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { gameActions } from "../redux/slices/gameSlice";
 import React from "react";
 
-// Pre-load dice images
-const diceImageImports = [
-  new URL('../assets/dice_1.png', import.meta.url).href,
-  new URL('../assets/dice_2.png', import.meta.url).href,
-  new URL('../assets/dice_3.png', import.meta.url).href,
-  new URL('../assets/dice_4.png', import.meta.url).href,
-  new URL('../assets/dice_5.png', import.meta.url).href,
-  new URL('../assets/dice_6.png', import.meta.url).href
-];
+// Import dice images directly
+import dice1 from '../assets/dice_1.png';
+import dice2 from '../assets/dice_2.png';
+import dice3 from '../assets/dice_3.png';
+import dice4 from '../assets/dice_4.png';
+import dice5 from '../assets/dice_5.png';
+import dice6 from '../assets/dice_6.png';
+
+const diceImageImports = [dice1, dice2, dice3, dice4, dice5, dice6];
 
 // Preload images
 diceImageImports.forEach(src => {
@@ -66,7 +66,7 @@ const DiceContainer = React.memo(() => {
         requestAnimationFrame(animate);
 
         
-    })
+    }, [dispatch, diceImages, guessedNumber]);
  
     useEffect(() => {
         return () => {
@@ -88,10 +88,18 @@ return (
                 className={`d-block mx-auto mb-4 dice-image ${isRolling ? 'rolling' : ''}`} 
                 src={diceImages[activeIndex]} 
                 alt={`Dice showing ${activeIndex + 1}`}
-                width="72" 
-                height="57" 
+                width="150" 
+                height="150" 
                 onClick={handleDiceRoll}
-                style={{ willChange: 'transform' }}
+                style={{ 
+                    willChange: 'transform',
+                    objectFit: 'contain'
+                }}
+                onError={(e) => {
+                    console.error('Image failed to load:', diceImages[activeIndex]);
+                    e.target.style.backgroundColor = '#f0f0f0';
+                    e.target.style.border = '2px solid #ccc';
+                }}
             />
         )}
         
